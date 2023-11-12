@@ -1,0 +1,38 @@
+def main():
+    plate = input("Plate: ")
+    if is_valid(plate):
+        print("Valid")
+    else:
+        print("Invalid")
+
+def is_valid(s):
+    #should be between 2 and 6 characters
+    if len(s) > 6 or len(s) < 2:
+      return False
+    #finds first digit
+    for n in range(len(s)):
+        if s[n].isdigit():
+            break
+        n += 1
+    #at least first two characters should be letters
+    if n < 2:
+        return False
+    #it the plate contains digits first digit should not be equal to 0
+    if n != len(s) :
+        if int(s[n]) == 0:
+           return False
+    #checks if characters before digits are uppercase letters
+    for i in range(n):
+       if s[i].isalpha() == False:
+            return False
+       elif s[i].isupper() == False:
+            return False
+
+    #checks if all characters after letters are digits
+    for k in range(n, len(s)):
+        if s[k].isdigit() == False:
+           return False
+    return True
+
+if __name__ == "__main__":
+    main()
