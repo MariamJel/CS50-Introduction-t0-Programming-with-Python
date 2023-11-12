@@ -1,0 +1,35 @@
+result = ""
+def main():
+    global result
+    z = percentage_calculator()
+    print(z)
+
+def percentage_calculator():
+    global result
+    while True:
+        try:
+
+            fraction = input("Gauge? ")
+            x,y = fraction.split("/")
+            p = int(x) / int(y)
+
+            if p > 1:
+                pass
+            elif p >= 0.99 and p <= 1:
+                result = "F"
+                return result
+            elif p >= 0  and p <= 0.01:
+                result = "E"
+                return result
+            else:
+                rounded = round(int(x) / int(y)*100)
+                result = str(rounded) + '%'
+                return result
+
+
+        except ValueError:
+            pass
+        except ZeroDivisionError:
+            pass
+
+main()
